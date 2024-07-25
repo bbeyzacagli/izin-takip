@@ -19,86 +19,115 @@ public class CalisanController {
     private CalisanService calisanService;
 
     @GetMapping
-    public ResponseEntity<List<Calisan>> getAllCalisanlar() {
-        List<Calisan> calisanlar = calisanService.getAllCalisanlar();
+    public ResponseEntity<List<Calisan>> getAllCalisan() {
+        List<Calisan> calisanlar = calisanService.getAllCalisan();
         return ResponseEntity.ok(calisanlar);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Calisan> getCalisanById(@PathVariable Long id) {
-        Optional<Calisan> calisan = calisanService.getCalisanById(id);
-        if (calisan.isPresent()) {
-            return ResponseEntity.ok(calisan.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        Optional<Calisan> calisanOpt = calisanService.getCalisanById(id);
+        return calisanOpt.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
     @PostMapping
     public ResponseEntity<Calisan> addCalisan(@RequestBody Calisan calisan) {
         Calisan savedCalisan = calisanService.saveCalisan(calisan);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(savedCalisan);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedCalisan);
     }
-
 
     @PutMapping("/{id}")
     public ResponseEntity<Calisan> updateCalisan(@PathVariable Long id, @RequestBody Calisan calisan) {
-        Optional<Calisan> existingCalisan = calisanService.getCalisanById(id);
-
-        if (existingCalisan.isPresent()) {
-            calisan.setCalisan_id(id);
-            Calisan updatedCalisan = calisanService.saveCalisan(calisan);
-            return ResponseEntity.ok(updatedCalisan);
-        } else {
+        if (!calisanService.getCalisanById(id).isPresent()) {
             return ResponseEntity.notFound().build();
         }
+        calisan.setCalisan_id(id);
+        Calisan updatedCalisan = calisanService.saveCalisan(calisan);
+        return ResponseEntity.ok(updatedCalisan);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Calisan> partialUpdateCalisan(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
-        Optional<Calisan> existingCalisan = calisanService.getCalisanById(id);
-
-        if (existingCalisan.isPresent()) {
-            Calisan calisan = existingCalisan.get();
-
-            if (updates.containsKey("ad")) {
-                calisan.setAd((String) updates.get("ad"));
-            }
-            if (updates.containsKey("soyad")) {
-                calisan.setSoyad((String) updates.get("soyad"));
-            }
-            if (updates.containsKey("email")) {
-                calisan.setEmail((String) updates.get("email"));
-            }
-            if (updates.containsKey("departman")) {
-                calisan.setDepartman((String) updates.get("departman"));
-            }
-            if (updates.containsKey("tel_no")) {
-                calisan.setTel_no((String) updates.get("tel_no"));
-            }
-            if (updates.containsKey("tc_no")) {
-                calisan.setTc_no((String) updates.get("tc_no"));
-            }
-            if (updates.containsKey("izin_gun")) {
-                calisan.setIzin_gun((Integer) updates.get("izin_gun"));
-            }
-
-            Calisan updatedCalisan = calisanService.saveCalisan(calisan);
-            return ResponseEntity.ok(updatedCalisan);
-        } else {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<Calisan> updateCalisanPartial(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+        Optional<Calisan> calisanOpt = calisanService.getCalisanById(id);
+        if (!calisanOpt.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+
+        Calisan calisan = calisanOpt.get();
+
+        // Güncellenmek istenen alanları işleme
+        updates.forEach((key, value) -> {
+            switch (key) {
+                case "ad":
+                    calisan.setAd((String) value);
+                    break;
+                case "soyad":
+                    calisan.setSoyad((String) value);
+                    break;
+                case "email":
+                    calisan.setEmail((String) value);
+                    break;
+                case "departman":
+                    calisan.setDepartman((String) value);
+                    break;
+                case "tel_no":
+                    calisan.setTel_no((String) value);
+                case "tc_no":
+                    calisan.setTc_no((String) value);
+                case "toplamIzinGun":
+                    calisan.setToplamIzinGun((Integer) value);
+                    break;
+            }
+        });
+
+        Calisan updatedCalisan = calisanService.updateCalisan(calisan);
+        return ResponseEntity.ok(updatedCalisan);
     }
+
+//    @PatchMapping("/{id}")
+//    public ResponseEntity<Calisan> partialUpdateCalisan(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+//        Optional<Calisan> existingCalisan = calisanService.getCalisanById(id);
+//        if (existingCalisan.isPresent()) {
+//            Calisan calisan = existingCalisan.get();
+//            updates.forEach((key, value) -> {
+//                switch (key) {
+//                    case "ad":
+//                        calisan.setAd((String) value);
+//                        break;
+//                    case "soyad":
+//                        calisan.setSoyad((String) value);
+//                        break;
+//                    case "email":
+//                        calisan.setEmail((String) value);
+//                        break;
+//                    case "departman":
+//                        calisan.setDepartman((String) value);
+//                        break;
+//                    case "tel_no":
+//                        calisan.setTel_no((String) value);
+//                        break;
+//                    case "tc_no":
+//                        calisan.setTc_no((String) value);
+//                        break;
+//                    case "izin_gun":
+//                        calisan.setToplamIzinGun((Integer) value);
+//                        break;
+//                }
+//            });
+//            Calisan updatedCalisan = calisanService.saveCalisan(calisan);
+//            return ResponseEntity.ok(updatedCalisan);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCalisan(@PathVariable Long id) {
         if (calisanService.getCalisanById(id).isPresent()) {
             calisanService.deleteCalisan(id);
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        calisanService.deleteCalisan(id);
+        return ResponseEntity.noContent().build();
     }
 }

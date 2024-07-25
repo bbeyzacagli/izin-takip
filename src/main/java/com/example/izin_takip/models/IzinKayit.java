@@ -3,8 +3,6 @@ package com.example.izin_takip.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
-
 @Entity
 @Data
 @Table(name = "izin_kayit")
@@ -12,10 +10,8 @@ public class IzinKayit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long izin_id;
-    private int izin_gun;
-    private Date izin_baslangic;
-    private Date izin_bitis;
+    private int alinan_izin;
     @ManyToOne
-    @JoinColumn(name = "calisan_id")
+    @JoinColumn(name = "calisan_id", nullable = false)
     private Calisan calisan;
 }

@@ -2,11 +2,9 @@ package com.example.izin_takip.service;
 
 import com.example.izin_takip.models.Calisan;
 import com.example.izin_takip.models.IzinKayit;
-import com.example.izin_takip.repository.CalisanRepository;
 import com.example.izin_takip.repository.IzinKayitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +15,7 @@ public class IzinKayitService {
     private IzinKayitRepository izinKayitRepository;
 
     @Autowired
-    private CalisanRepository calisanRepository;
+    private CalisanService calisanService;
 
     public List<IzinKayit> findAll() {
         return izinKayitRepository.findAll();
@@ -28,19 +26,23 @@ public class IzinKayitService {
     }
 
     public IzinKayit save(IzinKayit izinKayit) {
-        // İzin süresi kadar toplam izin gününden düşülmesi
-        Optional<Calisan> calisanOpt = calisanRepository.findById(izinKayit.getCalisan().getCalisan_id());
+        IzinKayit savedIzinKayit = izinKayitRepository.save(izinKayit);
+
+        Optional<Calisan> calisanOpt = calisanService.getCalisanById(izinKayit.getCalisan().getCalisan_id());
         if (calisanOpt.isPresent()) {
             Calisan calisan = calisanOpt.get();
-            int kalanIzinGun = calisan.getIzin_gun() - izinKayit.getIzin_gun();
-            if (kalanIzinGun < 0) {
-                throw new IllegalArgumentException("Yeterli izin günü yok.");
-            }
-            calisan.setIzin_gun(kalanIzinGun);
-            calisanRepository.save(calisan);
+            calisan.setToplamIzinGun(calisan.getToplamIzinGun() - izinKayit.getAlinan_izin());
+            calisanService.updateCalisan(calisan);
+        } else {
+            throw new RuntimeException("Çalışan bulunamadı");
         }
-        return izinKayitRepository.save(izinKayit);
+
+        return savedIzinKayit;
     }
+
+//    public IzinKayit save(IzinKayit izinKayit) {
+//        return izinKayitRepository.save(izinKayit);
+//    }
 
     public void deleteById(Long id) {
         izinKayitRepository.deleteById(id);

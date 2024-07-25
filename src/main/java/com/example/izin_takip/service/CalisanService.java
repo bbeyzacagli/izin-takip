@@ -4,17 +4,19 @@ import com.example.izin_takip.models.Calisan;
 import com.example.izin_takip.repository.CalisanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CalisanService {
-
     @Autowired
     private CalisanRepository calisanRepository;
 
-    public List<Calisan> getAllCalisanlar() {
+    public Calisan saveCalisan(Calisan calisan) {
+        return calisanRepository.save(calisan);
+    }
+
+    public List<Calisan> getAllCalisan() {
         return calisanRepository.findAll();
     }
 
@@ -22,7 +24,7 @@ public class CalisanService {
         return calisanRepository.findById(id);
     }
 
-    public Calisan saveCalisan(Calisan calisan) {
+    public Calisan updateCalisan(Calisan calisan) {
         return calisanRepository.save(calisan);
     }
 
