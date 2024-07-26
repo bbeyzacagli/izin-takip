@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -14,7 +13,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/calisanlar")
 public class CalisanController {
-
     @Autowired
     private CalisanService calisanService;
 
@@ -52,10 +50,7 @@ public class CalisanController {
         if (!calisanOpt.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-
         Calisan calisan = calisanOpt.get();
-
-        // Güncellenmek istenen alanları işleme
         updates.forEach((key, value) -> {
             switch (key) {
                 case "ad":
@@ -79,47 +74,9 @@ public class CalisanController {
                     break;
             }
         });
-
         Calisan updatedCalisan = calisanService.updateCalisan(calisan);
         return ResponseEntity.ok(updatedCalisan);
     }
-
-//    @PatchMapping("/{id}")
-//    public ResponseEntity<Calisan> partialUpdateCalisan(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
-//        Optional<Calisan> existingCalisan = calisanService.getCalisanById(id);
-//        if (existingCalisan.isPresent()) {
-//            Calisan calisan = existingCalisan.get();
-//            updates.forEach((key, value) -> {
-//                switch (key) {
-//                    case "ad":
-//                        calisan.setAd((String) value);
-//                        break;
-//                    case "soyad":
-//                        calisan.setSoyad((String) value);
-//                        break;
-//                    case "email":
-//                        calisan.setEmail((String) value);
-//                        break;
-//                    case "departman":
-//                        calisan.setDepartman((String) value);
-//                        break;
-//                    case "tel_no":
-//                        calisan.setTel_no((String) value);
-//                        break;
-//                    case "tc_no":
-//                        calisan.setTc_no((String) value);
-//                        break;
-//                    case "izin_gun":
-//                        calisan.setToplamIzinGun((Integer) value);
-//                        break;
-//                }
-//            });
-//            Calisan updatedCalisan = calisanService.saveCalisan(calisan);
-//            return ResponseEntity.ok(updatedCalisan);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCalisan(@PathVariable Long id) {

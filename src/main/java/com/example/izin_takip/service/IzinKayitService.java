@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Service
 public class IzinKayitService {
-
     @Autowired
     private IzinKayitRepository izinKayitRepository;
 
@@ -39,10 +38,6 @@ public class IzinKayitService {
 
         return savedIzinKayit;
     }
-
-//    public IzinKayit save(IzinKayit izinKayit) {
-//        return izinKayitRepository.save(izinKayit);
-//    }
 
     public void deleteById(Long id) {
         izinKayitRepository.deleteById(id);
