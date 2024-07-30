@@ -7,8 +7,6 @@ const CalisanFormu = () => {
         soyad: '',
         email: '',
         departman: '',
-        telefon: '',
-        tcNo: '',
         izinGunleri: 15
     });
 
@@ -43,8 +41,6 @@ const CalisanFormu = () => {
                     soyad: '',
                     email: '',
                     departman: '',
-                    tel_no: '',
-                    tc_no: '',
                     izinGunleri: 15
                 });
             } else {
@@ -98,35 +94,6 @@ const CalisanFormu = () => {
                     value={formData.departman}
                     onChange={handleChange}
                     required
-                />
-
-                <label htmlFor="telefon">Telefon No:</label>
-                <input
-                    type="tel"
-                    id="tel_no"
-                    name="tel_no"
-                    value={formData.tel_no}
-                    onChange={handleChange}
-                    required
-                />
-
-                <label htmlFor="tc_no">TC Kimlik No:</label>
-                <input
-                    type="text"
-                    id="tc_no"
-                    name="tc_no"
-                    value={formData.tc_no}
-                    onChange={handleChange}
-                    required
-                />
-
-                <label htmlFor="izinGunleri">İzin Günleri:</label>
-                <input
-                    type="number"
-                    id="izinGunleri"
-                    name="izinGunleri"
-                    value={formData.izinGunleri}
-                    readOnly
                 />
 
                 <button type="submit">Kaydet</button>

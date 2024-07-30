@@ -65,10 +65,6 @@ public class CalisanController {
                 case "departman":
                     calisan.setDepartman((String) value);
                     break;
-                case "tel_no":
-                    calisan.setTel_no((String) value);
-                case "tc_no":
-                    calisan.setTc_no((String) value);
                 case "toplamIzinGun":
                     calisan.setToplamIzinGun((Integer) value);
                     break;

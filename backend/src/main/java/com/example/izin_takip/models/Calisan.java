@@ -14,8 +14,6 @@ public class Calisan {
     private String soyad;
     private String email;
     private String departman;
-    private String tel_no;
-    private String tc_no;
     @Column(name = "izin_gun")
     private int toplamIzinGun = 15;
 }

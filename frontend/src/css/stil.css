@@ -1,7 +1,6 @@
-/* Genel Stil Ayarları */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f8f8f8;
     margin: 0;
     padding: 0;
 }
@@ -9,36 +8,36 @@ body {
 .container {
     width: 80%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 25px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #c9c9c9;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #181818;
 }
 
-/* Form Stilleri */
 form {
     display: flex;
     flex-direction: column;
 }
 
 label {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     font-weight: bold;
     color: #333;
 }
 
 input {
-    padding: 12px;
-    margin-bottom: 15px;
+    padding: 10px;
+    margin-bottom: 25px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 input[type="number"] {
@@ -51,20 +50,21 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-/* Buton Stili */
 button {
-    padding: 12px;
-    background-color: #007bff;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #86898d;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     transition: background-color 0.3s ease;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #65686c;
 }
 
 button:disabled {
@@ -72,7 +72,6 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Uyarı Mesajları */
 .alert {
     padding: 15px;
     margin-bottom: 20px;
@@ -83,11 +82,44 @@ button:disabled {
 .alert-success {
     color: #155724;
     background-color: #d4edda;
-    border-color: #c3e6cb;
+    border-color: #ffffff;
 }
 
 .alert-error {
     color: #721c24;
     background-color: #f8d7da;
-    border-color: #f5c6cb;
+    border-color: #ffffff;
+}
+
+nav {
+    background-color: #1e1f1f;
+    padding: 10px;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #111;
 }
