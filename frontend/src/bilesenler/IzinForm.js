@@ -28,7 +28,7 @@ const IzinForm = () => {
             }
 
             if (parseInt(alinanIzin) > selectedCalisanObj.toplamIzinGun) {
-                setHataMesaji('Alınan izin günleri, çalışanın mevcut izin günlerinden fazla olamaz.');
+                setHataMesaji('Alınan izin günü, çalışanın mevcut izin gününden fazla olamaz.');
                 return;
             }
 
@@ -44,7 +44,7 @@ const IzinForm = () => {
                 setSelectedCalisan('');
                 setAlinanIzin('');
                 setHataMesaji('');
-                window.location.reload(); // Sayfayı yeniler
+                window.location.reload(); 
             } else {
                 throw new Error('Bir hata oluştu.');
             }
@@ -75,7 +75,7 @@ const IzinForm = () => {
                     ))}
                 </select>
 
-                <label htmlFor="alinanIzin">Alınan İzin Günleri:</label>
+                <label htmlFor="alinanIzin">Alınan İzin Günü:</label>
                 <input
                     type="number"
                     id="alinanIzin"
