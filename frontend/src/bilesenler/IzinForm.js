@@ -27,13 +27,20 @@ const IzinForm = () => {
                 return;
             }
 
-            if (parseInt(alinanIzin) > selectedCalisanObj.toplamIzinGun) {
-                setHataMesaji('Alınan izin günü, çalışanın mevcut izin gününden fazla olamaz.');
+            const alinanIzinSayisi = parseInt(alinanIzin);
+
+            if (alinanIzinSayisi <= 0) {
+                setHataMesaji('Alınan izin günü 0\'dan büyük olmalıdır.');
+                return;
+            }
+
+            if (alinanIzinSayisi > selectedCalisanObj.toplamIzinGun) {
+                setHataMesaji('Alınan izin günü çalışanın mevcut izin gününden az olmalıdır.');
                 return;
             }
 
             const response = await axios.post('http://localhost:8080/izinler', {
-                alinan_izin: parseInt(alinanIzin),
+                alinan_izin: alinanIzinSayisi,
                 calisan: {
                     calisan_id: calisanId
                 }
