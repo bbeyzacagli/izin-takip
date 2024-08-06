@@ -6,13 +6,15 @@ body {
 }
 
 .container {
-    width: 80%;
-    max-width: 600px;
+    width: 70%;
+    max-width: 900px;
+    min-width: 320px;
     margin: 25px auto;
     padding: 20px;
     background-color: #c9c9c9;
     border-radius: 8px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
 }
 
 h1 {
@@ -30,12 +32,8 @@ label {
     font-weight: bold;
     color: #333;
 }
-select{
-    padding: 10px;
-    margin-bottom: 25px;
-}
 
-input {
+select, input {
     padding: 10px;
     margin-bottom: 25px;
     border: 1px solid #ddd;
@@ -43,7 +41,6 @@ input {
     font-size: 16px;
     font-family: 'Times New Roman', Times, serif;
 }
-
 
 input[type="number"] {
     -moz-appearance: textfield;
@@ -92,7 +89,8 @@ button:disabled {
 
 .alert-error {
     color: #721c24;
-    background-color: #f8d7da;
+    text-align: center;
+    background-color: #472023;
     border-color: #ffffff;
 }
 
@@ -110,6 +108,7 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 nav ul li {
@@ -129,6 +128,9 @@ nav ul li a:hover {
     background-color: #111;
 }
 
+.table-wrapper {
+    overflow-x: auto;
+}
 
 .table {
     width: 100%;
@@ -138,6 +140,7 @@ nav ul li a:hover {
     text-align: left;
     background-color: #fff;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
   
   .table thead tr {
@@ -173,15 +176,27 @@ nav ul li a:hover {
   
   @media (max-width: 768px) {
     .container {
-        width: 90%;
+        width: 70%;
         padding: 10px;
     }
 
-    .table {
-        font-size: 14px;
+    nav ul {
+        flex-direction: column;
     }
 
-    .table th, .table td {
-        padding: 8px;
+    nav ul li {
+        flex: none;
+    }
+
+    nav ul li a {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .table {
+        font-size: 16px;
     }
 }

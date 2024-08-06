@@ -16,17 +16,30 @@ const Liste = () => {
   return (
     <div className="container">
       <h1>Çalışanlar Listesi</h1>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Ad</th>
-            <th>Soyad</th>
-            <th>Email</th>
-            <th>Departman</th>
-            <th>İzin Günleri</th>
-          </tr>
-        </thead>
-      </table>
+      <div className="table-wrapper">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Ad</th>
+              <th>Soyad</th>
+              <th>Email</th>
+              <th>Departman</th>
+              <th>İzin Günleri</th>
+            </tr>
+          </thead>
+          <tbody>
+            {calisanlar.map((calisan, index) => (
+              <tr key={index}>
+                <td>{calisan.ad}</td>
+                <td>{calisan.soyad}</td>
+                <td>{calisan.email}</td>
+                <td>{calisan.departman}</td>
+                <td>{calisan.toplamIzinGun}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

@@ -77,7 +77,7 @@ const IzinForm = () => {
                     <option value="">Seçiniz</option>
                     {calisanlar.map((calisan) => (
                         <option key={calisan.calisan_id} value={`${calisan.calisan_id} ${calisan.ad} ${calisan.soyad}`}>
-                            {calisan.ad} {calisan.soyad} (Kalan İzin: {calisan.toplamIzinGun})
+                            {calisan.ad} {calisan.soyad} ({calisan.toplamIzinGun})
                         </option>
                     ))}
                 </select>

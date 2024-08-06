@@ -83,7 +83,6 @@ const CalisanFormu = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
                 />
 
                 <label htmlFor="departman">Departman:</label>
