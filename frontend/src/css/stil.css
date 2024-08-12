@@ -1,46 +1,55 @@
 body {
-    font-family: 'Times New Roman', Times, serif;
-    background-color: #f8f8f8;
+    font-family: 'Roboto', sans-serif;
+    background-color: #69583a2a;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    width: 70%;
-    max-width: 900px;
+    width: 45%;
+    max-width: 800px;
     min-width: 320px;
-    margin: 25px auto;
-    padding: 20px;
-    background-color: #c9c9c9;
-    border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.919);
     box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
-    color: #181818;
+    color: #333;
+    font-size: 30px; 
+    margin-bottom: 20px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 label {
-    margin-bottom: 12px;
-    font-weight: bold;
-    color: #333;
+    display: flex;
+    flex-direction: column;
 }
 
-select, input {
-    padding: 10px;
-    margin-bottom: 25px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    font-family: 'Times New Roman', Times, serif;
+label span {
+    font-weight: bold;
+    margin-bottom: 8px;
 }
+
+input, select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    width: 100%; 
+    box-sizing: border-box;
+}
+
 
 input[type="number"] {
     -moz-appearance: textfield;
@@ -53,80 +62,96 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 button {
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #86898d;
-    color: #fff;
+    padding: 12px;
+    background-color: #008c7b;
+    color: #ffffff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 button:hover {
-    background-color: #65686c;
+    background-color: #318b80;
+    transform: scale(1.05); 
 }
 
 button:disabled {
-    background-color: #6c757d;
+    background-color: #527d78;
     cursor: not-allowed;
 }
 
 .alert {
     padding: 15px;
     margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .alert-success {
     color: #155724;
     background-color: #d4edda;
-    border-color: #ffffff;
+    border: 1px solid #c3e6cb;
 }
 
 .alert-error {
     color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
     text-align: center;
-    background-color: #472023;
-    border-color: #ffffff;
 }
 
 nav {
-    background-color: #333a41;
-    padding: 10px;
-    overflow: hidden;
-    top: 0;
+    background-color: #333;
+    padding: 12px;
     width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
 }
 
-nav ul {
-    list-style-type: none;
+.navbar-container {
+    display: flex;
+    align-items: center;
+}
+
+.site-name {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px; 
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
 }
 
-nav ul li {
-    flex: 1;
+.nav-links li {
+    margin-right: 10px;
 }
 
-nav ul li a {
+.nav-links li a {
     display: block;
-    color: white;
+    color: #cac3c3;
     text-align: center;
-    padding: 12px 0;
+    padding: 12px 15px;
     text-decoration: none;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-nav ul li a:hover {
-    background-color: #111;
+.nav-links li a:hover {
+    background-color: transparent;
+    transform: scale(1.05); 
 }
+
+.nav-links li a.active {
+    font-weight: bold; 
+}
+
 
 .table-wrapper {
     overflow-x: auto;
@@ -136,48 +161,42 @@ nav ul li a:hover {
     width: 100%;
     border-collapse: collapse;
     margin: 25px 0;
-    font-size: 18px;
-    text-align: left;
+    font-size: 16px;
     background-color: #fff;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-  }
-  
-  .table thead tr {
-    background-color: #86898d;
-    color: white;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  .table th{
-    padding: 6px 15px;
-  }
+}
 
-  .table td {
-    padding: 12px 15px;
-  }
-  
-  .table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  .table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  
-  .table tbody tr:last-of-type {
-    border-bottom: 2px solid #86898d;
-  }
-  
-  .table tbody tr:hover {
+.table thead tr {
+    background-color: #008c7c72;
+    color: white;
+    font-weight: bold;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
     background-color: #f1f1f1;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+.table tbody tr:last-of-type {
+    border-bottom: 2px solid #008c7cc3;
+}
+
+@media (max-width: 768px) {
     .container {
-        width: 70%;
-        padding: 10px;
+        width: 90%;
+        padding: 15px;
     }
 
     nav ul {
@@ -193,10 +212,10 @@ nav ul li a:hover {
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 1.8em;
     }
 
     .table {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
