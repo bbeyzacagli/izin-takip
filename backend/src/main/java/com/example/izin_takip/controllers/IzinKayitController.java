@@ -2,8 +2,9 @@ package com.example.izin_takip.controllers;
 
 import com.example.izin_takip.models.Calisan;
 import com.example.izin_takip.models.IzinKayit;
-import com.example.izin_takip.service.CalisanService;
-import com.example.izin_takip.service.IzinKayitService;
+import com.example.izin_takip.services.CalisanService;
+import com.example.izin_takip.services.IzinKayitService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

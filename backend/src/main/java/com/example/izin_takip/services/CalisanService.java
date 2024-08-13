@@ -1,7 +1,8 @@
-package com.example.izin_takip.service;
+package com.example.izin_takip.services;
 
 import com.example.izin_takip.models.Calisan;
-import com.example.izin_takip.repository.CalisanRepository;
+import com.example.izin_takip.repositories.CalisanRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -28,7 +29,11 @@ public class CalisanService {
         return calisanRepository.save(calisan);
     }
 
-    public void deleteCalisan(Long id) {
-        calisanRepository.deleteById(id);
+    public boolean deleteCalisanById(Long id) {
+        if (calisanRepository.existsById(id)) {
+            calisanRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

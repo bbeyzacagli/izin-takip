@@ -1,7 +1,8 @@
 package com.example.izin_takip.controllers;
 
 import com.example.izin_takip.models.Calisan;
-import com.example.izin_takip.service.CalisanService;
+import com.example.izin_takip.services.CalisanService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -76,11 +77,10 @@ public class CalisanController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCalisan(@PathVariable Long id) {
-        if (calisanService.getCalisanById(id).isPresent()) {
-            calisanService.deleteCalisan(id);
-            return ResponseEntity.noContent().build();
+        boolean isRemoved = calisanService.deleteCalisanById(id);
+        if (!isRemoved) {
+            return ResponseEntity.notFound().build();
         }
-        calisanService.deleteCalisan(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }

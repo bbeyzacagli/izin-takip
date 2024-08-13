@@ -35,7 +35,7 @@ const IzinForm = () => {
             }
 
             if (alinanIzinSayisi > selectedCalisanObj.toplamIzinGun) {
-                setHataMesaji('Alınan izin günü çalışanın mevcut izin gününden az olmalıdır.');
+                setHataMesaji(`Alınan izin günü çalışanın mevcut izin gününden az olmalıdır. (İzin günü: ${selectedCalisanObj.toplamIzinGun})`);
                 return;
             }
 
@@ -77,7 +77,7 @@ const IzinForm = () => {
                     <option value="">Seçiniz</option>
                     {calisanlar.map((calisan) => (
                         <option key={calisan.calisan_id} value={`${calisan.calisan_id} ${calisan.ad} ${calisan.soyad}`}>
-                            {calisan.ad} {calisan.soyad} ({calisan.toplamIzinGun})
+                            {calisan.ad} {calisan.soyad} ({calisan.departman})
                         </option>
                     ))}
                 </select>

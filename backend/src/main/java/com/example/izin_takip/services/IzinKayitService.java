@@ -1,8 +1,9 @@
-package com.example.izin_takip.service;
+package com.example.izin_takip.services;
 
 import com.example.izin_takip.models.Calisan;
 import com.example.izin_takip.models.IzinKayit;
-import com.example.izin_takip.repository.IzinKayitRepository;
+import com.example.izin_takip.repositories.IzinKayitRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
