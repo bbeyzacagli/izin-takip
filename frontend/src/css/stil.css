@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #E0E1DD;
     margin: 0;
     padding: 0;
@@ -27,7 +27,16 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+}
+
+form label, form select, form .react-datepicker-wrapper {
+    display: block;
+    margin-bottom: 20px;
+}
+
+form .react-datepicker-wrapper {
+    width: 100%;
 }
 
 label {
@@ -41,11 +50,11 @@ label span {
 }
 
 input, select {
-    padding: 12px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     width: 100%; 
     box-sizing: border-box;
 }
@@ -70,6 +79,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease, transform 0.2s ease; 
+    font-family: 'Poppins', sans-serif;
 }
 
 button:hover {
@@ -101,6 +111,13 @@ button:disabled {
     text-align: center;
 }
 
+.site-name {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px; 
+}
+
 nav {
     background-color: #0D1B2A;
     padding: 12px;
@@ -114,13 +131,6 @@ nav {
 .navbar-container {
     display: flex;
     align-items: center;
-}
-
-.site-name {
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
-    margin-right: 20px; 
 }
 
 .nav-links {

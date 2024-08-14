@@ -17,7 +17,7 @@ const App = () => {
                                 to="/"
                                 className={({ isActive }) => isActive ? 'active' : ''}
                             >
-                                Çalışan Ekleme
+                                Yeni Çalışan
                             </NavLink>                                
                         </li>
                         <li>
@@ -25,7 +25,7 @@ const App = () => {
                                 to="/izin"
                                 className={({ isActive }) => isActive ? 'active' : ''}
                             >
-                                İzin Giriş
+                                İzin Kaydı
                             </NavLink>                                
                         </li>
                         <li>
@@ -33,7 +33,7 @@ const App = () => {
                                 to="/liste"
                                 className={({ isActive }) => isActive ? 'active' : ''}
                             >
-                                Listeleme Ekranı
+                                Listeleme
                             </NavLink>                                
                         </li>                        
                     </ul>
