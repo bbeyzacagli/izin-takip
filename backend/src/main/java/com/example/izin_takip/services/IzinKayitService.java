@@ -31,12 +31,17 @@ public class IzinKayitService {
         Optional<Calisan> calisanOpt = calisanService.getCalisanById(izinKayit.getCalisan().getCalisan_id());
         if (calisanOpt.isPresent()) {
             Calisan calisan = calisanOpt.get();
-            calisan.setToplamIzinGun(calisan.getToplamIzinGun() - izinKayit.getAlinan_izin());
-            calisanService.updateCalisan(calisan);
+
+            int yeniIzinGun = calisan.getToplamIzinGun() - izinKayit.getAlinan_izin();
+            if (yeniIzinGun >= 0) {
+                calisan.setToplamIzinGun(yeniIzinGun);
+                calisanService.updateCalisan(calisan);
+            } else {
+                throw new RuntimeException("Yetersiz izin günü");
+            }
         } else {
             throw new RuntimeException("Çalışan bulunamadı");
         }
-
         return savedIzinKayit;
     }
 

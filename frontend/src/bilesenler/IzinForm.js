@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import DatePicker from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import tr from 'date-fns/locale/tr'; 
 import axios from 'axios';
 import '../css/stil.css';
+
+registerLocale('tr', tr); 
 
 const IzinForm = () => {
     const [calisanlar, setCalisanlar] = useState([]);
@@ -108,7 +111,7 @@ const IzinForm = () => {
     return (
         <div className="container">
             <h1>İzin Kayıt Ekranı</h1>
-            {hataMesaji && <div className="alert alert-error">{hataMesaji}</div>}
+            {hataMesaji && <div className="alert alert-warning">{hataMesaji}</div>}
             <form onSubmit={handleSubmit}>
                 <label htmlFor="calisan">Çalışan:</label>
                 <select
@@ -134,8 +137,9 @@ const IzinForm = () => {
                         dateFormat="dd/MM/yyyy"
                         minDate={new Date()}
                         disabled={!selectedCalisan}
+                        locale="tr"
                     />
-                    
+
                     <label>İzin Bitiş Tarihi:</label>
                     <DatePicker
                         selected={endDate}
@@ -144,6 +148,7 @@ const IzinForm = () => {
                         minDate={startDate || new Date()}
                         maxDate={maxEndDate}
                         disabled={!startDate}
+                        locale="tr"
                     />
 
                     <div>Alınan İzin Gün Sayısı: {daysOff}</div>

@@ -10,6 +10,7 @@ body {
     max-width: 800px;
     min-width: 320px;
     margin: 100px auto;
+    margin-bottom: 10px;
     padding: 30px;
     background-color: #ffffff;
     border-radius: 12px;
@@ -32,7 +33,7 @@ form {
 
 form label, form select, form .react-datepicker-wrapper {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 form .react-datepicker-wrapper {
@@ -58,7 +59,6 @@ input, select {
     width: 100%; 
     box-sizing: border-box;
 }
-
 
 input[type="number"] {
     -moz-appearance: textfield;
@@ -113,7 +113,7 @@ button:disabled {
 
 .site-name {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
     margin-right: 20px; 
 }
@@ -126,11 +126,14 @@ nav {
     top: 0;
     left: 0;
     z-index: 1000; 
+    display: flex;
+    align-items: center;
 }
 
 .navbar-container {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .nav-links {
@@ -162,7 +165,6 @@ nav {
     font-weight: bold; 
 }
 
-
 .table-wrapper {
     overflow-x: auto;
 }
@@ -183,7 +185,7 @@ nav {
 }
 
 .table th, .table td {
-    padding: 12px;
+    padding: 10px;
     text-align: left;
 }
 
@@ -204,28 +206,35 @@ nav {
 }
 
 @media (max-width: 768px) {
-    .container {
-        width: 90%;
-        padding: 15px;
-    }
-
-    nav ul {
+    .nav-links {
+        display: none; 
         flex-direction: column;
+        width: 100%;
+        background-color: #0D1B2A;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
     }
 
-    nav ul li {
-        flex: none;
+    .nav-links.open {
+        display: flex;
     }
 
-    nav ul li a {
-        padding: 10px;
+    .nav-links li {
+        margin: 0;
+        border-bottom: 1px solid #778DA9;
     }
 
-    h1 {
-        font-size: 1.8em;
+    .nav-links li a {
+        padding: 12px;
+        text-align: center;
     }
 
-    .table {
-        font-size: 14px;
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: #ffffff;
     }
 }

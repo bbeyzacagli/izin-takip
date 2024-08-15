@@ -70,7 +70,7 @@ public class IzinKayitController {
         });
 
         Calisan calisan = izinKayit.getCalisan();
-        int yeniToplamIzinGun = calisan.getToplamIzinGun() + eskiAlinanIzin - izinKayit.getAlinan_izin();
+        int yeniToplamIzinGun = calisan.getToplamIzinGun() - (eskiAlinanIzin + izinKayit.getAlinan_izin());
         calisan.setToplamIzinGun(yeniToplamIzinGun);
         calisanService.updateCalisan(calisan);
         IzinKayit updatedIzinKayit = izinKayitService.save(izinKayit);

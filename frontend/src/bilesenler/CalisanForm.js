@@ -56,7 +56,7 @@ const CalisanFormu = () => {
         <div className="container">
             <h1>Bilgilerinizi Giriniz</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="ad">Ad:</label>
+                <label htmlFor="ad">Ad:
                 <input
                     type="text"
                     id="ad"
@@ -64,9 +64,9 @@ const CalisanFormu = () => {
                     value={formData.ad}
                     onChange={handleChange}
                     required
-                />
+                /></label>
 
-                <label htmlFor="soyad">Soyad:</label>
+                <label htmlFor="soyad">Soyad:
                 <input
                     type="text"
                     id="soyad"
@@ -74,9 +74,9 @@ const CalisanFormu = () => {
                     value={formData.soyad}
                     onChange={handleChange}
                     required
-                />
+                /></label>
 
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email">Email:
                 <input
                     type="email"
                     id="email"
@@ -84,9 +84,9 @@ const CalisanFormu = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                />
+                /></label>
 
-                <label htmlFor="departman">Departman:</label>
+                <label htmlFor="departman">Departman:
                 <input
                     type="text"
                     id="departman"
@@ -94,7 +94,7 @@ const CalisanFormu = () => {
                     value={formData.departman}
                     onChange={handleChange}
                     required
-                />
+                /></label>
 
                 <button type="submit">Kaydet</button>
             </form>
