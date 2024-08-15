@@ -6,6 +6,10 @@
         "config": {
           "distDir": "frontend/build"
         }
+      },
+      {
+        "src": "backend/package.json",
+        "use": "@vercel/node"
       }
     ]
   }
