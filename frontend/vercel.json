@@ -11,6 +11,9 @@
         "src": "backend/package.json",
         "use": "@vercel/node"
       }
+    ],
+    "rewrites": [
+      { "source": "/api/(.*)", "destination": "/backend/$1" }
     ]
   }
   
