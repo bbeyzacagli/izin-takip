@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: izin-takip
+spec:
+  selector:
+    matchLabels:
+      app: izin-takip
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: izin-takip
+    spec:
+      containers:
+        - name: izin-takip
+          image: bbeyzacagli/izin-takip:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP

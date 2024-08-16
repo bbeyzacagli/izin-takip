@@ -205,6 +205,10 @@ nav {
     border-bottom: 2px solid #778DA9;
 }
 
+.menu-toggle {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none; 
